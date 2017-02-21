@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- Register Alias -->
+    <typeAliases>
+        <typeAlias alias="user" type="com.bins.mybatisonly.model.User" />
+    </typeAliases>
+
+    <!-- Data Source -->
+    <!--<environments default="development">-->
+        <!--<environment id="development">-->
+            <!--<transactionManager type="JDBC" />-->
+            <!--<dataSource type="POOLED">-->
+                <!--<property name="driver" value="oracle.jdbc.driver.OracleDriver" />-->
+                <!--<property name="url" value="jdbc:oracle:thin:@xxx.xxx.xxx.xxx:xxxx:xxxxxx" />-->
+                <!--<property name="username" value="xxxx" />-->
+                <!--<property name="password" value="xxxx" />-->
+            <!--</dataSource>-->
+        <!--</environment>-->
+    <!--</environments>-->
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost/andydb?characterEncoding=UTF8" />
+                <property name="username" value="root" />
+                <property name="password" value="root" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- Register Mapper -->
+    <mappers>
+        <!-- SQL Mapper -->
+        <mapper resource="mapper/UserMapper.xml" />
+    </mappers>
+
+</configuration>
