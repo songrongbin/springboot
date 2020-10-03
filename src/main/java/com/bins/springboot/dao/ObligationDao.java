@@ -1,4 +1,4 @@
-package com.bins.logback.dao;
+package com.bins.springboot.dao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

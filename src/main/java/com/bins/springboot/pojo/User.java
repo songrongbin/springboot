@@ -1,3 +1,4 @@
+package com.bins.springboot.pojo;
 //package com.bins.mongodb;
 //
 //import org.springframework.data.annotation.Id;

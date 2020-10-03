@@ -1,4 +1,10 @@
 spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/springboot_db?useUnicode=true&characterEncoding=UTF8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
   kafka:
     bootstrap-servers: 192.168.10.4:9092
     listener:
@@ -16,21 +22,22 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       batch-size: 65536
       buffer-memory: 524288
-redis:
-  database: 0
-  host: 127.0.0.1
-  port: 6379
-  password:
-  jedis:
-    pool:
-      max-active: 8
-      max-wait: -1
-      max-idle: 8
-      min-idle: 0
-    timeout: 1200
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+      timeout: 1200
 log: 
   df-kafkaconsumer: 
     topic : dflog
 
 logging:
   file: /Users/songrongbin/logs/springboot.log
+mybatis.config-location: classpath:mybatis-config.xml

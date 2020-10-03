@@ -1,7 +1,8 @@
 package com.bins.mybatisonly;
 
-import com.bins.mybatisonly.mapper.UserMapper;
-import com.bins.mybatisonly.model.User;
+import com.bins.springboot.mapper.UserMapper;
+import com.bins.springboot.pojo.model.User;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -41,7 +42,7 @@ public class MybatisOnlyTest {
         try {
             UserMapper userMapper = session.getMapper(UserMapper.class);
             user = userMapper.queryUser(username);
-            System.out.println("username - " + user.getUsername() + " , password - " + user.getPassword());
+            System.out.println("username - " + user.getUserName() + " , password - " + user.getPassword());
         } finally {
             session.close();
         }
@@ -58,11 +59,11 @@ public class MybatisOnlyTest {
         try {
             UserMapper userMapper = session.getMapper(UserMapper.class);
             User user = new User();
-            user.setUsername(username);
+            user.setUserName(username);
             user.setPassword(password);
             userMapper.insertUser(user);
             session.commit();
-            System.out.println("username - " + user.getUsername() + " , password - " + user.getPassword());
+            System.out.println("username - " + user.getUserName() + " , password - " + user.getPassword());
         } catch (Exception e) {
             session.rollback();
             e.printStackTrace();
@@ -80,7 +81,7 @@ public class MybatisOnlyTest {
         SqlSession session = sqlSessionFactory.openSession();
         try {
             User user = new User();
-            user.setUsername(username);
+            user.setUserName(username);
             user.setPassword(password);
             session.insert("com.bins.mybatisonly.mapper.UserMapper.insertUser", user);
             session.commit();

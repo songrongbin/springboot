@@ -11,7 +11,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
-import com.bins.springboot.common.Status;
+import com.bins.springboot.common.enums.Status;
 
 @Component
 public class RedisUtil {

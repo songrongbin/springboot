@@ -1,3 +1,4 @@
+package com.bins.springboot.mongodb;
 //package com.bins.mongodb;
 //
 //import org.springframework.data.mongodb.repository.MongoRepository;

@@ -1,8 +1,9 @@
-package com.bins.logback.service;
+package com.bins.springboot.service;
 
-import com.bins.logback.dao.ObligationDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.bins.springboot.dao.ObligationDao;
 
 public class ObligationService {
     static final Logger log = LoggerFactory.getLogger(ObligationService.class);
