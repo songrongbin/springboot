@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--开启debug模式-->
+<configuration debug="true">
+	
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}"/>
+	<!-- <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+	<include resource="org/springframework/boot/logging/logback/file-appender.xml" /> -->
+	
+	<property name="LOG_HOME" value="/Users/songrongbin/logs" />
+	
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		<file>${LOG_FILE}</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<cleanHistoryOnStart>${LOG_FILE_CLEAN_HISTORY_ON_START:-false}</cleanHistoryOnStart>
+			<fileNamePattern>${ROLLING_FILE_NAME_PATTERN:-${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz}</fileNamePattern>
+			<maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
+			<maxHistory>${LOG_FILE_MAX_HISTORY:-7}</maxHistory>
+			<totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP:-0}</totalSizeCap>
+		</rollingPolicy>
+	</appender> -->
+	
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>/Users/songrongbin/logs/springboot.%d{yyyy-MM-dd}.log</fileNamePattern>
+	        <maxHistory>7</maxHistory>
+	    </rollingPolicy>
+	    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+	        <pattern>${FILE_LOG_PATTERN}</pattern>
+	    </encoder>
+	</appender>
+	
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+	
+	<springProfile name="local,dev">
+	    <root level="INFO">
+	        <appender-ref ref="CONSOLE"/>
+	        <appender-ref ref="FILE"/>
+	    </root>
+	</springProfile>
+	
+	<springProfile name="prod">
+	    <root level="INFO">
+	        <appender-ref ref="CONSOLE"/>
+	        <appender-ref ref="FILE"/>
+	    </root>
+	</springProfile>
+</configuration>
